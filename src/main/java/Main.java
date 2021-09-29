@@ -22,6 +22,7 @@ public class Main {
         //userImpl.makeNewUser(params_newUser);
         String[] params_poll = {"False", "10:00", "Dette er vår andre poll", "andre poll", "True", "11:00", "2 min"};
         Optional<User> u = userImpl.get(1);
+        System.out.println("u: " + u);
         userImpl.makeNewPoll(u, params_poll);
 
 

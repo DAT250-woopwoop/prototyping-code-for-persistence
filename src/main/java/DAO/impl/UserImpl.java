@@ -8,11 +8,11 @@ import java.util.*;
 
 public class UserImpl implements DAO<User> {
     private final EntityManager entityManager;
-    private final PollsImpl pollsImpl;
+    private final PollImpl pollImpl;
 
     public UserImpl(EntityManager em){
         entityManager = em;
-        pollsImpl = new PollsImpl(em);
+        pollImpl = new PollImpl(em);
 
     }
 
@@ -23,27 +23,18 @@ public class UserImpl implements DAO<User> {
         String password = params[3];
         String username = params[4];
 
-        Polls polls = new Polls();
-        executeInsideTransaction(entityManager1 -> entityManager1.persist(polls), entityManager);
-
         User newUser = new User();
         newUser.setE_mail(email);
         newUser.setF_name(f_name);
         newUser.setL_name(l_name);
         newUser.setPassword(password);
         newUser.setUsername(username);
-        newUser.setPolls(polls);
 
         save(newUser);
-
-        polls.setUser(newUser);
-        String[] params1 = {null, null, null};
-        pollsImpl.update(polls, params1, newUser);
-
     }
 
-    public void makeNewPoll(Optional<User> user, String[] params) {
-        pollsImpl.makeNewPoll(user.get().getPolls(), params);
+    public void makeNewPoll(User user, String[] params) {
+        pollImpl.makePoll(params, user);
 
     }
     @Override

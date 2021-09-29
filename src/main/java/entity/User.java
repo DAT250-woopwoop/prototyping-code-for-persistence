@@ -3,6 +3,8 @@ package entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -19,6 +21,7 @@ public class User {
     private String f_name;
     private String l_name;
 
-    @OneToOne
-    private Polls polls;
+    @OneToMany(mappedBy = "user")
+    private final List<Poll> polls = new ArrayList<>();
+    public List<Poll> getPolls() { return polls; }
 }

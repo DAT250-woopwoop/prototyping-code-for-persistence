@@ -3,6 +3,7 @@ package entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Optional;
 
 @Entity
 @Getter
@@ -25,7 +26,8 @@ public class Poll {
     private int noOption;
 
     @ManyToOne
-    private Polls polls;
+    private User user;
+
 
     public Poll() {
         pollDesc="";

@@ -4,14 +4,13 @@
              version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
     <persistence-unit name="FeedApp" transaction-type="RESOURCE_LOCAL">
 
-        <class>entity.Polls</class>
         <class>entity.Poll</class>
         <class>entity.User</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>
             <property name="javax.persistence.jdbc.url"
-                      value="jdbc:derby:/Users/mathias/Desktop/testdb;create=true"/>
+                      value="jdbc:derby:C:\Users\mhhun\OneDrive\Documents\Master\7.semester\DAT250\GruppeOppgaver/testDB;create=true"/>
             <property name="javax.persistence.jdbc.user" value="test"/>
             <property name="javax.persistence.jdbc.password" value="test"/>
             <property name="eclipselink.ddl-generation" value="create-tables"/>

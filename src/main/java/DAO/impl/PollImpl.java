@@ -60,7 +60,7 @@ public class PollImpl implements DAO<Poll> {
        executeInsideTransaction(entityManager -> entityManager.remove(poll), entityManager);
     }
 
-    public void makePoll(String[] params, Polls polls){
+    public void makePoll(String[] params, User user){
         Poll poll = new Poll();
         boolean closed = params[0] != null ? Boolean.parseBoolean(params[0]) : poll.isClosed();
         String endTime =  params[1] != null ? params[1] : poll.getEndTime();
@@ -70,7 +70,7 @@ public class PollImpl implements DAO<Poll> {
         String startTime = params[5] != null ? params[5] : poll.getStartTime();
         String timeLimit =  params[6] != null ? params[6] : poll.getTimeLimit();
 
-        poll.setPolls(polls);
+        poll.setUser(user);
         String[] newParams = {String.valueOf(closed), endTime, null, pollDesc, pollName, String.valueOf(privatePoll), startTime, timeLimit, null};
         update(poll, newParams);
     }
